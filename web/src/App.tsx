@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { MotionConfig } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import { ScrollTrigger } from '@/lib/gsap';
 import { SmoothScrollProvider } from '@/providers/SmoothScroll';
 import { useDeviceTier } from '@/hooks/useDeviceTier';
@@ -139,6 +140,7 @@ export default function App() {
         <FilmGrain />
         <Vignette />
         <Cursor />
+        <Analytics />
       </SmoothScrollProvider>
     </MotionConfig>
   );
