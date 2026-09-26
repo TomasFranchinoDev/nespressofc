@@ -21,6 +21,17 @@ export const IMAGES = {
     "alt": "El plantel de Nespresso FC posando con la bandera del escudo en una cancha de césped",
     "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABwBACdASoYABIAPuVeok2pJSMiMAwBIByJYwCxH47C+2z9vr+Ed5Nn3V6EgAD+1LZYBGUGsSH1WjahhdvQaBLIHSLkApnWa7i7iSskDOpzbz0/0Jq3zcFg9Awd87zS2tdOnRoA"
   },
+  "hero-bg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "alt": "El plantel de Nespresso FC posando con la bandera del escudo en una cancha de césped",
+    "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAwCdASoYABIAPu1iqU2ppaOiMAgBMB2JZwDLLCHXYJf9x/2I6cAA/p19iosCsJYfv+H18SwpSVegs+35r45ha3uyAAAA"
+  },
   "equipo-cancha": {
     "w": 2400,
     "h": 1800,

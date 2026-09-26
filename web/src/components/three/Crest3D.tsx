@@ -16,7 +16,11 @@ const S = 0.0042; // unidades SVG → unidades de escena (~3.4 de ancho)
 const CX = 516;
 const CY = 483;
 
-function useCrestGeometry() {
+type Quality = 'high' | 'mobile';
+
+function useCrestGeometry(quality: Quality) {
+  // Mobile: menos segmentos de curva y bisel → ~1/3 de vértices, se construye más rápido al montar.
+  const seg = quality === 'high' ? { curve: 32, bevel: 5 } : { curve: 14, bevel: 3 };
   return useMemo(() => {
     const { paths } = new SVGLoader().parse(crestSvg);
     const byId = (id: string) => paths.filter((p) => {
@@ -32,7 +36,7 @@ function useCrestGeometry() {
 
     const extrude = (shapes: THREE.Shape | THREE.Shape[], depth: number, bevel = 6) => {
       const g = new THREE.ExtrudeGeometry(shapes, {
-        depth, curveSegments: 32, bevelEnabled: bevel > 0, bevelThickness: bevel, bevelSize: bevel * 0.8, bevelSegments: 5,
+        depth, curveSegments: seg.curve, bevelEnabled: bevel > 0, bevelThickness: bevel, bevelSize: bevel * 0.8, bevelSegments: seg.bevel,
       });
       g.translate(-CX, -CY, 0);
       g.computeVertexNormals();
@@ -46,13 +50,28 @@ function useCrestGeometry() {
       letter: extrude(shapesOf('n'), 78, 4),
       swoosh: extrude(shapesOf('swoosh'), 96, 5),
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quality]);
 }
 
-function CrestModel() {
+/**
+ * Material: en desktop, físico con clearcoat (doble capa de brillo). En mobile, estándar:
+ * mismo color/metal/rugosidad, sin la segunda capa especular → shader mucho más barato de compilar y pintar.
+ */
+function Mat({ quality, color, metalness, roughness, clearcoat, clearcoatRoughness }: {
+  quality: Quality; color: string; metalness: number; roughness: number; clearcoat: number; clearcoatRoughness?: number;
+}) {
+  return quality === 'high' ? (
+    <meshPhysicalMaterial color={color} metalness={metalness} roughness={roughness} clearcoat={clearcoat} clearcoatRoughness={clearcoatRoughness} />
+  ) : (
+    <meshStandardMaterial color={color} metalness={metalness} roughness={Math.max(0.15, roughness - 0.05)} />
+  );
+}
+
+function CrestModel({ quality }: { quality: Quality }) {
   const group = useRef<THREE.Group>(null);
   const sweep = useRef<THREE.PointLight>(null);
-  const geo = useCrestGeometry();
+  const geo = useCrestGeometry(quality);
   const rotY = useRef(-Math.PI * 1.1);
 
   useFrame(({ clock }, delta) => {
@@ -83,19 +102,19 @@ function CrestModel() {
       <group scale={[S, -S, S]} position={[0, 0, -0.2]}>
         {/* Tapa trasera: al girar se ve el dorso de una medalla, no la N espejada. */}
         <mesh geometry={geo.back} position={[0, 0, -8]}>
-          <meshPhysicalMaterial color="#24160d" metalness={0.9} roughness={0.35} clearcoat={0.5} />
+          <Mat quality={quality} color="#24160d" metalness={0.9} roughness={0.35} clearcoat={0.5} />
         </mesh>
         <mesh geometry={geo.ring}>
-          <meshPhysicalMaterial color="#3b2415" metalness={0.85} roughness={0.28} clearcoat={0.7} clearcoatRoughness={0.25} />
+          <Mat quality={quality} color="#3b2415" metalness={0.85} roughness={0.28} clearcoat={0.7} clearcoatRoughness={0.25} />
         </mesh>
         <mesh geometry={geo.plate} position={[0, 0, 6]}>
-          <meshPhysicalMaterial color="#e8d5b5" metalness={0.05} roughness={0.45} clearcoat={0.9} clearcoatRoughness={0.18} />
+          <Mat quality={quality} color="#e8d5b5" metalness={0.05} roughness={0.45} clearcoat={0.9} clearcoatRoughness={0.18} />
         </mesh>
         <mesh geometry={geo.letter}>
-          <meshPhysicalMaterial color="#2a1a0e" metalness={0.75} roughness={0.26} clearcoat={1} clearcoatRoughness={0.1} />
+          <Mat quality={quality} color="#2a1a0e" metalness={0.75} roughness={0.26} clearcoat={1} clearcoatRoughness={0.1} />
         </mesh>
         <mesh geometry={geo.swoosh}>
-          <meshPhysicalMaterial color="#35231a" metalness={0.8} roughness={0.22} clearcoat={1} clearcoatRoughness={0.08} />
+          <Mat quality={quality} color="#35231a" metalness={0.8} roughness={0.22} clearcoat={1} clearcoatRoughness={0.08} />
         </mesh>
       </group>
       <pointLight ref={sweep} position={[-5, 1.5, 3]} color="#ffb36b" distance={12} decay={1.6} />
@@ -103,26 +122,28 @@ function CrestModel() {
   );
 }
 
-export default function Crest3D({ active }: { active: boolean }) {
+export default function Crest3D({ active, quality = 'high' }: { active: boolean; quality?: Quality }) {
+  const high = quality === 'high';
   return (
     <Canvas
       frameloop={active ? 'always' : 'never'}
-      dpr={[1, 1.75]}
+      // Mobile: pantallas de DPR 3 → tope 1.5 y sin MSAA (a esa densidad el serrucho no se ve).
+      dpr={high ? [1, 1.75] : [1, 1.5]}
       camera={{ position: [0, 0, 8.4], fov: 30 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: high, alpha: true, powerPreference: 'high-performance' }}
       aria-hidden
     >
       <ambientLight intensity={0.25} />
       <directionalLight position={[3, 4, 5]} intensity={2.2} color="#fff1dc" />
       <directionalLight position={[-4, -2, -3]} intensity={1.4} color="#ff9a4d" />
       {/* Reflejos de estudio armados con Lightformers: cero descargas de HDR. */}
-      <Environment resolution={256} frames={1}>
+      <Environment resolution={high ? 256 : 128} frames={1}>
         <Lightformer form="rect" intensity={3} color="#fff4e0" position={[0, 4, 4]} scale={[10, 1.5, 1]} />
         <Lightformer form="rect" intensity={2} color="#ffb070" position={[-5, 0, 2]} rotation-y={Math.PI / 2} scale={[8, 1, 1]} />
         <Lightformer form="rect" intensity={1.5} color="#e8d5b5" position={[5, -1, 2]} rotation-y={-Math.PI / 2} scale={[8, 1, 1]} />
         <Lightformer form="ring" intensity={2.5} color="#ffffff" position={[2, 2, 6]} scale={2} />
       </Environment>
-      <CrestModel />
+      <CrestModel quality={quality} />
     </Canvas>
   );
 }

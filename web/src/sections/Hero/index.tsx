@@ -12,7 +12,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { gsap, useGSAP, MQ } from '@/lib/gsap';
 import { useDeviceTier } from '@/hooks/useDeviceTier';
-import { usePrefersReducedMotion } from '@/hooks/useMedia';
+import { useIsDesktop, usePrefersReducedMotion } from '@/hooks/useMedia';
 import { Crest } from '@/components/ui/Crest';
 import { Particles } from '@/components/fx/Particles';
 import { CLUB } from '@/data/club';
@@ -30,8 +30,13 @@ export function Hero({ ready }: { ready: boolean }) {
   const root = useRef<HTMLElement>(null);
   const { tier } = useDeviceTier();
   const reduced = usePrefersReducedMotion();
+  const desktop = useIsDesktop();
   const [crestActive, setCrestActive] = useState(true);
   const use3D = tier === 'high';
+  // Mobile: mismas partículas, menos cantidad y a menor resolución (el vapor es borroso: no se nota).
+  const fx = desktop
+    ? { steam: use3D ? 1 : 0.5, dust: use3D ? 0.8 : 0.4, steamDpr: 1, dustDpr: 1.5 }
+    : { steam: 0.45, dust: 0.35, steamDpr: 0.6, dustDpr: 1 };
 
   // Puntero → tilt del escudo.
   useEffect(() => {
@@ -73,7 +78,9 @@ export function Hero({ ready }: { ready: boolean }) {
               x: (i) => `${(i - (TITLE.length - 1) / 2) * spread}vw`,
               rotate: (i) => (i - 4) * 6,
               opacity: 0,
-              filter: 'blur(12px)',
+              // Desktop: desenfoque real. Mobile: un blur animado sobre 9 letras gigantes re-rasteriza
+              // cada frame (era el tirón del primer scroll); se reemplaza por escala, que va por GPU.
+              ...(desktop ? { filter: 'blur(12px)' } : { scale: 1.5 }),
               duration: 0.4,
             },
             0.03,
@@ -131,8 +138,8 @@ export function Hero({ ready }: { ready: boolean }) {
     >
       <div className="sticky top-0 h-svh overflow-hidden">
         <HeroBackdrop />
-        <Particles mode="steam" density={use3D ? 1 : 0.5} className="z-[1] opacity-90" />
-        <Particles mode="dust" density={use3D ? 0.8 : 0.4} className="z-[1]" />
+        <Particles mode="steam" density={fx.steam} maxDpr={fx.steamDpr} className="z-[1] opacity-90" />
+        <Particles mode="dust" density={fx.dust} maxDpr={fx.dustDpr} className="z-[1]" />
 
         {/* Escudo: 3D si el equipo aguanta, SVG si no. */}
         <div
@@ -142,7 +149,7 @@ export function Hero({ ready }: { ready: boolean }) {
           <div data-crest-inner className="h-full w-full">
             {use3D ? (
               <Suspense fallback={<Crest variant="kit" className="mx-auto h-full w-auto opacity-0" />}>
-                <Crest3D active={crestActive} />
+                <Crest3D active={crestActive} quality={desktop ? 'high' : 'mobile'} />
               </Suspense>
             ) : (
               <Crest variant="kit" className="mx-auto h-full w-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)]" />

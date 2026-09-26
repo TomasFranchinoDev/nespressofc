@@ -10,7 +10,9 @@
     <meta property="og:description" content="La suerte del principiante no puede fallar." />
     <meta property="og:image" content="/img/og.jpg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" as="image" href="/img/equipo-debut-1600.webp" type="image/webp" fetchpriority="high" />
+    <!-- Mismo srcset/sizes que el <picture> del Hero: el navegador precarga exactamente el archivo que va a usar. -->
+    <link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="100vw"
+      imagesrcset="/img/hero-bg-480.avif 480w, /img/hero-bg-960.avif 960w, /img/hero-bg-1600.avif 1600w" />
   </head>
   <body>
     <div id="root"></div>

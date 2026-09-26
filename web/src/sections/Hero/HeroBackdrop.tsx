@@ -79,19 +79,13 @@ export function HeroBackdrop() {
     <div className="absolute inset-0 overflow-hidden bg-ink-950">
       <div data-hero-bg className="absolute inset-0 origin-[50%_45%] will-change-transform" style={{ transform: 'scale(1.08)' }}>
         {!sequence && (
-          <Img
-            slug="equipo-debut"
-            priority
-            sizes="100vw"
-            className="h-full w-full"
-            focus="50% 55%"
-            imgClassName="[filter:saturate(0.78)_contrast(1.12)_brightness(0.62)]"
-          />
+          // Etalonaje horneado en la imagen (hero-bg): sin filter ni mix-blend que el GPU
+          // tenga que recomponer en cada frame del dolly-in.
+          <Img slug="hero-bg" priority sizes="100vw" className="h-full w-full" focus="50% 55%" />
         )}
         <canvas ref={canvas} aria-hidden className={sequence ? 'absolute inset-0 h-full w-full' : 'hidden'} />
       </div>
-      {/* Etalonaje: tinte café + degradés para leer el texto. */}
-      <div aria-hidden className="absolute inset-0 bg-roast-700/45 mix-blend-multiply" />
+      {/* Degradés para leer el texto (el tinte café ya viene en la imagen). */}
       <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink-950/85 via-ink-950/10 to-ink-950" />
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,transparent_20%,rgba(11,11,11,0.75)_80%)]" />
     </div>

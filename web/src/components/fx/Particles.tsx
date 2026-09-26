@@ -34,8 +34,12 @@ function sprite(rgb: [number, number, number], soft: boolean) {
 }
 
 export function Particles({
-  mode = 'steam', density = 1, className,
-}: { mode?: Mode; density?: number; className?: string }) {
+  mode = 'steam', density = 1, className, maxDpr = 1.5,
+}: {
+  mode?: Mode; density?: number; className?: string;
+  /** Resolución máxima del canvas. El vapor es borroso: se ve igual a menos píxeles y cuesta mucho menos. */
+  maxDpr?: number;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -44,7 +48,7 @@ export function Particles({
     if (!canvas || reduced) return;
     const ctx = canvas.getContext('2d')!;
     const img = sprite(PALETTE[mode], mode === 'steam');
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
     let w = 0, h = 0, raf = 0, visible = true;
     const parts: P[] = [];
 
@@ -102,7 +106,7 @@ export function Particles({
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
     return () => { cancelAnimationFrame(raf); io.disconnect(); ro.disconnect(); };
-  }, [mode, density, reduced]);
+  }, [mode, density, reduced, maxDpr]);
 
   return <canvas ref={ref} aria-hidden className={cn('pointer-events-none absolute inset-0 h-full w-full', className)} />;
 }

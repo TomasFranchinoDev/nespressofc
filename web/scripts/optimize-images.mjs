@@ -31,6 +31,13 @@ const IMAGES = {
     file: 'Foto equipo nespresso 1 vez que jugamos en cancha.jpeg',
     alt: 'El plantel de Nespresso FC posando con la bandera del escudo en una cancha de césped',
   },
+  // Fondo del Hero con el etalonaje "horneado" (antes eran un filter CSS + una capa mix-blend-multiply
+  // que el GPU recalculaba en cada frame del dolly-in; en mobile era de lo más caro del Hero).
+  'hero-bg': {
+    file: 'Foto equipo nespresso 1 vez que jugamos en cancha.jpeg',
+    grade: true,
+    alt: 'El plantel de Nespresso FC posando con la bandera del escudo en una cancha de césped',
+  },
   'equipo-cancha': {
     file: 'Foto equipo nespresso en cancha.jpeg',
     alt: 'El equipo en cancha de sintético con la bandera "La suerte del principiante no puede fallar"',
@@ -148,6 +155,13 @@ async function processOne(slug, spec) {
   if (spec.crop) {
     buf = await sharp(buf).extract(spec.crop(meta)).toBuffer();
     meta = await sharp(buf).metadata();
+  }
+  if (spec.grade) {
+    // Mismo resultado que: filter saturate(.78) contrast(1.12) brightness(.62) + tinte #4A2C0A al 45% en multiply.
+    const tint = [74, 44, 10].map((c) => 0.62 * (0.55 + 0.45 * (c / 255)));
+    buf = await sharp(buf).modulate({ saturation: 0.78 }).toBuffer();
+    buf = await sharp(buf).linear(1.12, 128 * (1 - 1.12)).toBuffer();
+    buf = await sharp(buf).linear(tint, [0, 0, 0]).toBuffer();
   }
   if (spec.upscale && meta.width < spec.upscale) {
     // No es una IA de upscaling, pero lanczos + un sharpen suave rinde bien a pantalla completa.
