@@ -123,8 +123,17 @@ function KitAnatomy() {
                     style={{ left: `${f.x}%`, top: `${f.y}%` }}
                     aria-label={f.title}
                   >
-                    <span className={cn('relative block rounded-full transition-all duration-500', i === active ? 'h-5 w-5 bg-crema' : 'h-3 w-3 bg-crema/60')}>
-                      {i === active && <span className="absolute inset-0 animate-ping rounded-full bg-crema/70 motion-reduce:animate-none" />}
+                    {/* Círculo con el mismo número que el ítem de la lista */}
+                    <span
+                      className={cn(
+                        'relative flex items-center justify-center rounded-full font-sub font-semibold tabular leading-none shadow-[0_2px_10px_rgba(0,0,0,0.6)] transition-all duration-500',
+                        i === active
+                          ? 'h-8 w-8 bg-crema text-xs text-ink-950 md:h-9 md:w-9 md:text-sm'
+                          : 'h-6 w-6 bg-crema/75 text-[10px] text-ink-950/80 ring-1 ring-ink-950/30',
+                      )}
+                    >
+                      {i === active && <span className="absolute inset-0 animate-ping rounded-full bg-crema/60 motion-reduce:animate-none" />}
+                      <span className="relative">{String(i + 1).padStart(2, '0')}</span>
                     </span>
                   </button>
                 ),

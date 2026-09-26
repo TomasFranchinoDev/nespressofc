@@ -58,6 +58,7 @@ export const PLAYERS: Player[] = [
     id: 'romero', firstName: 'Ignacio', lastName: 'Romero', nickname: 'Nacho',
     number: 3, position: 'DEF', birthDate: '1994-12-30', status: 'activo',
     current: s(3, 2), past: s(5, 0),
+    photo: { slug: 'accion-18-cabezazo', focus: '48% 25%' },
   },
   {
     id: 'genero', firstName: 'Gerónimo', lastName: 'Genero', nickname: 'Gero',
@@ -103,7 +104,6 @@ export const PLAYERS: Player[] = [
     id: 'marantelli', firstName: 'Juan Ignacio', lastName: 'Marantelli', nickname: 'Juani',
     number: 18, position: 'DC', birthDate: '1994-07-26', status: 'activo',
     current: s(3, 0, 1), past: null,
-    photo: { slug: 'accion-18-cabezazo', focus: '48% 25%' },
   },
   {
     id: 'acuna', firstName: 'Franco Ezequiel', lastName: 'Acuña', nickname: 'Coty',
@@ -114,7 +114,6 @@ export const PLAYERS: Player[] = [
     id: 'franchino', firstName: 'Tomás Agustín', lastName: 'Franchino', nickname: 'Tomi',
     number: 17, position: 'MD', birthDate: '2003-09-05', status: 'activo',
     current: s(2, 0), past: s(9, 0),
-    photo: { slug: 'kit-front-worn', focus: '50% 22%' },
   },
   {
     id: 'driussi', firstName: 'Marcos', lastName: 'Driussi', nickname: 'Marcos',

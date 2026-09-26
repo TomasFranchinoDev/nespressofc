@@ -13,7 +13,7 @@ import { cn } from '@/lib/cn';
 const TILES: { slug: ImageSlug; caption: string; cls: string; speed: number; focus?: string }[] = [
   { slug: 'accion-22-b', caption: '#22 · Pinotti', cls: 'md:col-span-4 md:row-span-2', speed: 8, focus: '45% 30%' },
   { slug: 'accion-26', caption: '#26 · Pala', cls: 'col-span-2 md:col-span-5 md:row-span-2', speed: 12, focus: '35% 50%' },
-  { slug: 'accion-18-cabezazo', caption: '#18 · Juani', cls: 'md:col-span-3 md:row-span-2', speed: 10, focus: '50% 30%' },
+  { slug: 'accion-18-cabezazo', caption: 'Nacho Romero', cls: 'md:col-span-3 md:row-span-2', speed: 10, focus: '50% 30%' },
   { slug: 'equipo-cancha', caption: 'Todos', cls: 'col-span-2 md:col-span-6 md:row-span-2', speed: 10, focus: '50% 68%' },
   { slug: 'accion-5', caption: '#5 · Toto', cls: 'md:col-span-3 md:row-span-2', speed: 14, focus: '62% 40%' },
   { slug: 'accion-11', caption: '#11 · Cono', cls: 'md:col-span-3 md:row-span-2', speed: 12, focus: '55% 30%' },

@@ -180,7 +180,7 @@ export const IMAGES = {
       480,
       899
     ],
-    "alt": "Tomi con el kit completo, de frente, con una cafetera de fondo",
+    "alt": "El kit completo, de frente, con una cafetera de fondo",
     "lqip": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACwBgCdASoYACsAPuVeok2pJSMiNVgMASAciUATplxxgAIiBSVjHxJrv8r7MFisWNqIiwBQepr4UipP8NeRAAD54UQmib88PPF2UvSdf/cuYrlcARfOdBsq43RFEKVkvUwyk8kweJMprVci8jsxYXxhrzwtc+yYrA8/bndalw0VbTYrBKUqZPLOhSl5yYV1u94RU6qCsRTP4radRQhKFAAA"
   },
   "kit-back-worn": {
@@ -253,7 +253,7 @@ export const IMAGES = {
       480,
       960
     ],
-    "alt": "Juani, el 18, salta a cabecear en un partido nocturno",
+    "alt": "Nacho Romero salta a cabecear en un partido nocturno",
     "lqip": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwBACdASoYAB0APu1qrFEppaQiqAqpMB2JYgDImDTv7yXaqg2M1WpVSwg2fy7gDwAA/vKtzQsyiso/RShKBiu+VQt1+kppP2LfYHibG7OrF5O3/GwjYbcia+7PxDZbbGdiIo2lN0GHRjvqArIpqAAA"
   },
   "accion-5": {

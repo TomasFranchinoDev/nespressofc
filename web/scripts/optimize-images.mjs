@@ -97,7 +97,7 @@ const IMAGES = {
   },
   'kit-front-worn': {
     file: 'Remera y pantalon frente.jpeg',
-    alt: 'Tomi con el kit completo, de frente, con una cafetera de fondo',
+    alt: 'El kit completo, de frente, con una cafetera de fondo',
   },
   'kit-back-worn': {
     file: 'Remera y pantalon espalda.jpeg',
@@ -129,7 +129,7 @@ const IMAGES = {
     file: 'Imagen de jugador en situacion de partido (2).jpeg',
     alt: 'Un jugador de Nespresso encara con la pelota al pie',
   },
-  'accion-18-cabezazo': { file: 'Foto de partido.jpeg', alt: 'Juani, el 18, salta a cabecear en un partido nocturno' },
+  'accion-18-cabezazo': { file: 'Foto de partido.jpeg', alt: 'Nacho Romero salta a cabecear en un partido nocturno' },
   'accion-5': { file: 'Foto de partido (2).jpeg', alt: 'Toto, el 5, protege la pelota ante dos rivales' },
   'accion-30': { file: 'Foto de partido (3).jpeg', alt: 'Leo, el 30, de espaldas frente al arquero rival. Fecha 2, división Europa' },
   'accion-11': { file: 'Foto de partido (4).jpeg', alt: 'Cono, el 11, controla la pelota con el pecho' },

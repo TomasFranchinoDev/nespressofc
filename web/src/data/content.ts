@@ -35,7 +35,7 @@ export const TIMELINE: TimelineItem[] = [
   {
     take: '03',
     title: 'Prueba de talle',
-    text: 'El 17 la estrena en la cocina. Al fondo, la cafetera: la verdadera sede social.',
+    text: 'La camiseta se estrena en la cocina. Al fondo, la cafetera: la verdadera sede social.',
     media: { type: 'image', slug: 'kit-front-worn', focus: '50% 30%' },
   },
   {
@@ -115,7 +115,7 @@ export type GalleryCategory = 'Cancha' | 'Equipo' | 'Tercer tiempo' | 'Indumenta
 export const GALLERY: { slug: ImageSlug; cat: GalleryCategory; caption: string }[] = [
   { slug: 'accion-22-b', cat: 'Cancha', caption: '#22 · Pinotti encara' },
   { slug: 'equipo-cancha', cat: 'Equipo', caption: 'La suerte del principiante no puede fallar' },
-  { slug: 'accion-18-cabezazo', cat: 'Cancha', caption: '#18 · Juani, de cabeza' },
+  { slug: 'accion-18-cabezazo', cat: 'Cancha', caption: 'Nacho Romero, de cabeza' },
   { slug: 'tercer-tiempo-selfie', cat: 'Tercer tiempo', caption: 'Bancos, vasos y bandera' },
   { slug: 'accion-11', cat: 'Cancha', caption: '#11 · Cono la para de pecho' },
   { slug: 'kit-flat', cat: 'Indumentaria', caption: 'La camiseta, extendida' },
