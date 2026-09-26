@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+/* ─────────────────────────────────────────────────────────────
+   Sistema de diseño Nespresso FC
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* Negros */
+  --color-ink-950: #0b0b0b;
+  --color-ink-900: #111111;
+  --color-ink-850: #161210;
+  --color-ink-800: #1c1612;
+
+  /* Tostados (del degradé real de la camiseta) */
+  --color-roast-950: #1a0f06;
+  --color-roast-900: #2a1a0e;
+  --color-roast-800: #35231a;
+  --color-roast-700: #4a2c0a;
+  --color-roast-500: #6b3e14;
+  --color-caramel: #8b5a3c;
+
+  /* Crema del escudo */
+  --color-crema: #e8d5b5;
+  --color-crema-dim: #bfae92;
+
+  /* Franja del pantalón: solo para acentos puntuales (EN VIVO, récords) */
+  --color-sunchales: #e0452b;
+
+  --font-display: 'Bebas Neue', 'Oswald Variable', Impact, sans-serif;
+  --font-sub: 'Oswald Variable', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-espresso: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-crema: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --animate-grain: grain 0.9s steps(6) infinite;
+  --animate-marquee: marquee var(--marquee-duration, 30s) linear infinite;
+  --animate-flicker: flicker 2.4s ease-in-out infinite;
+
+  @keyframes grain {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-8%, 6%); }
+    40% { transform: translate(6%, -10%); }
+    60% { transform: translate(-12%, -4%); }
+    80% { transform: translate(10%, 8%); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    18% { opacity: 1; transform: scale(1.08); }
+    35% { opacity: 0.7; transform: scale(0.96); }
+    52% { opacity: 0.95; transform: scale(1.04); }
+    74% { opacity: 0.75; transform: scale(0.98); }
+  }
+}
+
+/* ─── Base ─────────────────────────────────────────────────── */
+@layer base {
+  html {
+    background: var(--color-ink-950);
+    color: #f4f1ec;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scrollbar-color: var(--color-roast-500) var(--color-ink-950);
+    /* clip (no hidden): corta el desborde horizontal sin crear un contenedor de scroll, así sticky sigue andando. */
+    overflow-x: clip;
+  }
+  body {
+    background: var(--color-ink-950);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-crema);
+    color: var(--color-ink-950);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-crema);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  img,
+  video {
+    max-width: 100%;
+  }
+}
+
+/* ─── Utilidades propias ───────────────────────────────────── */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-stroke-color: var(--outline-color, rgba(232, 213, 181, 0.55));
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+@utility kicker {
+  font-family: var(--font-sub);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-crema-dim);
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Perforaciones de película (Origen) */
+@utility sprockets {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 14px,
+    rgba(244, 241, 236, 0.9) 14px 30px,
+    transparent 30px 44px
+  );
+  background-size: 44px 100%;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* SplitText: la máscara de cada línea recorta; con este aire no se comen las tildes de las mayúsculas. */
+.split-line-mask {
+  padding-block: 0.16em;
+  margin-block: -0.16em;
+}
+
+/* SplitText: evita el "flash" de texto antes de que GSAP divida las líneas */
+.split-pending {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .split-pending {
+    visibility: visible;
+  }
+}
+
+@keyframes scrollcue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(220%); }
+}
