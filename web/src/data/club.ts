@@ -5,12 +5,13 @@ export const CLUB = {
   founded: 2026,
   motto: 'La suerte del principiante no puede fallar',
   /**
-   * Contacto: cuando exista, poné el valor y los botones del CTA se activan solos.
-   * instagram: 'nespresso.fc' · whatsapp: '5493493XXXXXX' · email: 'hola@...'
+   * Contacto. Si un valor es null, su botón no se muestra.
+   * whatsapp: con código de país, sin "+" ni espacios (formato de wa.me).
+   * Los desafíos del formulario "Desafianos" llegan a estos dos canales.
    */
   contact: {
-    instagram: null as string | null,
-    whatsapp: null as string | null,
+    instagram: 'nespressofc' as string | null,
+    whatsapp: '5493493666696' as string | null,
     email: null as string | null,
   },
 };

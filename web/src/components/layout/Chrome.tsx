@@ -4,7 +4,8 @@
  */
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring, useTransform } from 'motion/react';
-import { CHAPTERS } from '@/data/club';
+import { CHAPTERS, CLUB } from '@/data/club';
+import { useDesafio } from '@/components/desafio/Desafio';
 import { Crest } from '@/components/ui/Crest';
 import { useActiveChapter } from '@/hooks/useActiveChapter';
 import { useScrollApi } from '@/providers/SmoothScroll';
@@ -47,6 +48,11 @@ export function Navbar({ ready }: { ready: boolean }) {
 
   // El escudo del navbar "recibe" al escudo 3D del Hero al final del recorrido.
   const crestOpacity = useTransform(scrollY, [heroEnd - 150, heroEnd + 50], [0, 1]);
+  const desafio = useDesafio();
+  const desafiar = () => {
+    setMenu(false);
+    desafio.open();
+  };
   const go = (id: string) => {
     setMenu(false);
     scrollTo(`#${id}`);
@@ -94,7 +100,7 @@ export function Navbar({ ready }: { ready: boolean }) {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => go('sumate')}
+              onClick={desafiar}
               className="hidden rounded-full bg-crema px-5 py-2.5 font-sub text-xs uppercase tracking-[0.2em] text-ink-950 transition-colors hover:bg-white sm:block"
             >
               Desafianos
@@ -150,6 +156,30 @@ export function Navbar({ ready }: { ready: boolean }) {
                 </motion.li>
               ))}
             </motion.ol>
+            <motion.div
+              className="mt-10 flex flex-wrap gap-3 border-t border-white/10 pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.7, ease: EASE.espresso }}
+            >
+              <button
+                type="button"
+                onClick={desafiar}
+                className="rounded-full bg-crema px-6 py-3 font-sub text-xs uppercase tracking-[0.2em] text-ink-950"
+              >
+                Desafianos
+              </button>
+              {CLUB.contact.instagram && (
+                <a
+                  href={`https://instagram.com/${CLUB.contact.instagram}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full px-6 py-3 font-sub text-xs uppercase tracking-[0.2em] text-crema ring-1 ring-crema/60"
+                >
+                  @{CLUB.contact.instagram}
+                </a>
+              )}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

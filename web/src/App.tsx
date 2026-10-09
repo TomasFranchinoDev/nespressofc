@@ -3,6 +3,7 @@ import { MotionConfig } from 'motion/react';
 import { Analytics } from '@vercel/analytics/react';
 import { ScrollTrigger } from '@/lib/gsap';
 import { SmoothScrollProvider } from '@/providers/SmoothScroll';
+import { DesafioProvider } from '@/components/desafio/Desafio';
 import { useDeviceTier } from '@/hooks/useDeviceTier';
 import { Preloader } from '@/components/layout/Preloader';
 import { ChapterIndex, Navbar, ScrollProgress } from '@/components/layout/Chrome';
@@ -118,29 +119,32 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <SmoothScrollProvider>
-        <a
-          href="#origen"
-          className="fixed left-4 top-4 z-[110] -translate-y-24 rounded bg-crema px-4 py-2 font-sub text-ink-950 focus:translate-y-0"
-        >
-          Saltar al contenido
-        </a>
-        <Preloader tasks={tasks} onDone={() => setReady(true)} />
-        <ScrollProgress />
-        {/* key: se re-montan una vez que existen todas las secciones, para observar sus capítulos. */}
-        <Navbar key={`nav-${restDone}`} ready={ready} />
-        <ChapterIndex key={`idx-${restDone}`} />
+        {/* "Desafianos": el modal vive acá para que lo abran el navbar, el menú y el CTA. */}
+        <DesafioProvider>
+          <a
+            href="#origen"
+            className="fixed left-4 top-4 z-[110] -translate-y-24 rounded bg-crema px-4 py-2 font-sub text-ink-950 focus:translate-y-0"
+          >
+            Saltar al contenido
+          </a>
+          <Preloader tasks={tasks} onDone={() => setReady(true)} />
+          <ScrollProgress />
+          {/* key: se re-montan una vez que existen todas las secciones, para observar sus capítulos. */}
+          <Navbar key={`nav-${restDone}`} ready={ready} />
+          <ChapterIndex key={`idx-${restDone}`} />
 
-        <main>
-          <Hero ready={ready} />
-          {REST.slice(0, mounted).map((Section, i) => (
-            <Section key={i} />
-          ))}
-        </main>
+          <main>
+            <Hero ready={ready} />
+            {REST.slice(0, mounted).map((Section, i) => (
+              <Section key={i} />
+            ))}
+          </main>
 
-        <FilmGrain />
-        <Vignette />
-        <Cursor />
-        <Analytics />
+          <FilmGrain />
+          <Vignette />
+          <Cursor />
+          <Analytics />
+        </DesafioProvider>
       </SmoothScrollProvider>
     </MotionConfig>
   );
