@@ -1,0 +1,32 @@
+{
+  "equipo": "Nespresso FC",
+  "salida": "src/data/valbe.json",
+  "nombresEdiciones": {
+    "Edicion5": "Sexto Torneo Invierno Valbé 26",
+    "Edicion6": "Torneo Verano Valbé"
+  },
+  "ignorarEdiciones": [],
+  "umbralNombre": 0.99,
+  "jugadores": {
+    "kerk": "Julián Kerk",
+    "pinotti": "Tomás Alejandro Pinotti",
+    "romero": "Ignacio Romero",
+    "genero": "Gerónimo Genero",
+    "fabbro": "Valentino Fabbro",
+    "dipaolo": "Facundo Di Paolo",
+    "suarez": "Tomás Bautista Suárez",
+    "fregona": "Elian Fregona",
+    "alasia": "Ulises Alasia",
+    "armatti": "Leandro Armatti",
+    "marantelli": "Juan Ignacio Marantelli",
+    "acuna": "Franco Ezequiel Acuña",
+    "franchino": "Tomás Agustín Franchino",
+    "driussi": "Marcos Driussi",
+    "palacios": "Agustín Palacios",
+    "yasenzaniro": "Martín Yasenzaniro",
+    "junco": "Fernando Junco"
+  },
+  "overrides": {
+    "_ejemplo": { "idDelSitio": 123 }
+  }
+}

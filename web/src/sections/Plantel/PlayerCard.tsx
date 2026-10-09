@@ -1,5 +1,5 @@
 import { POSITION_LABEL, type Player, type StatLine } from '@/data/players';
-import { ageOf, tagsOf } from '@/lib/stats';
+import { ageOf, tagsOf, PAST_LABEL } from '@/lib/stats';
 import { Img } from '@/components/ui/Img';
 import { TiltCard } from '@/components/ui/Interactive';
 import { Crest } from '@/components/ui/Crest';
@@ -124,7 +124,7 @@ export function PlayerCard({ p }: { p: Player }) {
 
         <div className="grid grid-cols-2 divide-x divide-white/8 border-t border-white/8">
           <StatCol label="Torneo actual" line={p.current} />
-          <StatCol label="Invierno 26" line={p.past} />
+          <StatCol label={PAST_LABEL.corto} line={p.past} />
         </div>
       </article>
     </TiltCard>

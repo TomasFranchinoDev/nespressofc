@@ -60,6 +60,16 @@ export const TIMELINE: TimelineItem[] = [
 ];
 
 /* ─── Torneos ──────────────────────────────────────────────── */
+
+/**
+ * Rótulos de cada edición de Valbé para cards y gráficos.
+ * Cuando arranque una edición nueva (ej. Edicion7), sumala acá y en scripts/valbe.config.json.
+ */
+export const EDICION_LABEL: Record<string, { corto: string; largo: string }> = {
+  Edicion5: { corto: 'Invierno 26', largo: 'Invierno Valbé 26' },
+  Edicion6: { corto: 'Verano 26', largo: 'Verano Valbé' },
+};
+
 export const TOURNAMENTS = [
   {
     key: 'past' as const,

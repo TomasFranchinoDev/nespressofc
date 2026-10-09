@@ -3,6 +3,43 @@
  * Nada de números hardcodeados en componentes: si cambia players.ts, cambia la página.
  */
 import { PLAYERS, type Player, type StatLine } from '@/data/players';
+import { EDICION_LABEL } from '@/data/content';
+import valbe from '@/data/valbe.json';
+
+/* ─── Ediciones de Valbé (src/data/valbe.json) ────────────────── */
+interface EdicionValbe {
+  nombre: string;
+  fechasJugadas: number;
+  golesFavor: number;
+  golesContra: number;
+}
+const EDICIONES = valbe.ediciones as Record<string, EdicionValbe>;
+const ID_ACTUAL = valbe.edicionActual;
+const IDS_PASADAS = Object.keys(EDICIONES).filter((e) => e !== ID_ACTUAL);
+
+export const EDICION_ACTUAL: EdicionValbe | undefined = EDICIONES[ID_ACTUAL];
+export const EDICIONES_PASADAS = IDS_PASADAS.map((e) => EDICIONES[e]);
+/** Cantidad de torneos jugados (ediciones de Valbé donde aparece Nespresso). */
+export const TORNEOS_JUGADOS = Object.keys(EDICIONES).length || 2;
+
+/**
+ * Rótulo de `past`: hoy es una sola edición (Invierno 26). Cuando haya más de una,
+ * `past` pasa a ser la suma de todas y el rótulo se vuelve genérico solo.
+ */
+export const PAST_LABEL =
+  IDS_PASADAS.length === 1
+    ? (EDICION_LABEL[IDS_PASADAS[0]] ?? { corto: EDICIONES[IDS_PASADAS[0]].nombre, largo: EDICIONES[IDS_PASADAS[0]].nombre })
+    : { corto: 'Anteriores', largo: 'torneos anteriores' };
+
+const NUMEROS = ['cero', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'];
+/** 2 → "dos" (para el copy: "dos torneos y contando"). */
+export const enLetras = (n: number, capital = false) => {
+  const w = NUMEROS[n] ?? String(n);
+  return capital ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+};
+
+/** 2 → "2", 1.333 → "1,3". */
+export const fmtNum = (n: number) => n.toLocaleString('es-AR', { maximumFractionDigits: 1 });
 
 /** Edad a hoy desde la fecha de nacimiento (no hay que actualizarla nunca). */
 export function ageOf(birthDate: string, now = new Date()): number {
@@ -32,12 +69,15 @@ export const TEAM = {
   current: {
     goles: sum(PLAYERS.map((p) => p.current), 'goles'),
     amarillas: sum(PLAYERS.map((p) => p.current), 'amarillas'),
-    fechas: Math.max(...PLAYERS.map((p) => p.current?.pj ?? 0)),
+    // Fechas reales del fixture de Valbé; el máximo de PJ queda solo como respaldo.
+    fechas: EDICION_ACTUAL?.fechasJugadas ?? Math.max(...PLAYERS.map((p) => p.current?.pj ?? 0)),
   },
   past: {
     goles: sum(PLAYERS.map((p) => p.past), 'goles'),
     amarillas: sum(PLAYERS.map((p) => p.past), 'amarillas'),
-    fechas: Math.max(...PLAYERS.map((p) => p.past?.pj ?? 0)),
+    fechas: EDICIONES_PASADAS.length
+      ? EDICIONES_PASADAS.reduce((acc, e) => acc + e.fechasJugadas, 0)
+      : Math.max(...PLAYERS.map((p) => p.past?.pj ?? 0)),
   },
   get goles() {
     return this.current.goles + this.past.goles;

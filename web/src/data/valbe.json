@@ -1,0 +1,686 @@
+{
+  "sincronizadoEn": "2026-10-09T15:38:31.131Z",
+  "equipo": "Nespresso FC",
+  "fuente": "https://complejovalbe.netlify.app (cache de https://fuchibol-fi0t.onrender.com)",
+  "fuenteGeneradaEn": "2026-10-09T03:55:30.534Z",
+  "edicionActual": "Edicion6",
+  "ediciones": {
+    "Edicion6": {
+      "nombre": "Torneo Verano Valbé",
+      "grupo": "Europa",
+      "zona": "Zona A",
+      "equipoId": 51,
+      "fechasJugadas": 4,
+      "golesFavor": 11,
+      "golesContra": 11,
+      "posicion": {
+        "zona": "Zona A",
+        "puesto": 8,
+        "de": 12,
+        "pj": 4,
+        "pg": 2,
+        "pe": 0,
+        "pp": 2,
+        "gf": 11,
+        "gc": 11,
+        "puntos": 6,
+        "amarillas": 2,
+        "rojas": 0
+      },
+      "proximo": {
+        "id": 245,
+        "fecha": "Fecha 4",
+        "copa": null,
+        "fechaHora": "2026-10-17T21:55",
+        "cancha": "Cancha 1",
+        "condicion": "local",
+        "rival": "Big Six",
+        "golesFavor": null,
+        "golesContra": null,
+        "penales": null,
+        "jugado": false,
+        "resultado": null
+      },
+      "partidos": [
+        {
+          "id": 27,
+          "fecha": "Fecha 1",
+          "copa": null,
+          "fechaHora": "2026-09-10T20:20",
+          "cancha": "Cancha 1",
+          "condicion": "visitante",
+          "rival": "Barcabeer",
+          "golesFavor": 1,
+          "golesContra": 2,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 74,
+          "fecha": "Fecha 2",
+          "copa": null,
+          "fechaHora": "2026-09-17T22:55",
+          "cancha": "Cancha 3",
+          "condicion": "local",
+          "rival": "Antena Franza",
+          "golesFavor": 1,
+          "golesContra": 6,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 224,
+          "fecha": "Fecha 3",
+          "copa": null,
+          "fechaHora": "2026-09-24T19:55",
+          "cancha": "Cancha 1",
+          "condicion": "visitante",
+          "rival": "Ta-Lento",
+          "golesFavor": 6,
+          "golesContra": 1,
+          "penales": null,
+          "jugado": true,
+          "resultado": "G"
+        },
+        {
+          "id": 256,
+          "fecha": "Fecha 5",
+          "copa": null,
+          "fechaHora": "2026-10-08T19:55",
+          "cancha": "Cancha 3",
+          "condicion": "visitante",
+          "rival": "Masiaticos",
+          "golesFavor": 3,
+          "golesContra": 2,
+          "penales": null,
+          "jugado": true,
+          "resultado": "G"
+        },
+        {
+          "id": 245,
+          "fecha": "Fecha 4",
+          "copa": null,
+          "fechaHora": "2026-10-17T21:55",
+          "cancha": "Cancha 1",
+          "condicion": "local",
+          "rival": "Big Six",
+          "golesFavor": null,
+          "golesContra": null,
+          "penales": null,
+          "jugado": false,
+          "resultado": null
+        }
+      ],
+      "jugadores": {
+        "kerk": {
+          "apiId": 457,
+          "pj": 2,
+          "goles": 4,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "pinotti": {
+          "apiId": 456,
+          "pj": 3,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "romero": {
+          "apiId": 458,
+          "pj": 4,
+          "goles": 3,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "genero": {
+          "apiId": 468,
+          "pj": 4,
+          "goles": 1,
+          "amarillas": 1,
+          "rojas": 0
+        },
+        "fabbro": {
+          "apiId": 465,
+          "pj": 2,
+          "goles": 1,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "dipaolo": {
+          "apiId": 459,
+          "pj": 4,
+          "goles": 1,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "suarez": {
+          "apiId": 460,
+          "pj": 4,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "fregona": {
+          "apiId": 469,
+          "pj": 4,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "alasia": {
+          "apiId": 461,
+          "pj": 2,
+          "goles": 1,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "armatti": {
+          "apiId": 462,
+          "pj": 1,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "marantelli": {
+          "apiId": 467,
+          "pj": 3,
+          "goles": 0,
+          "amarillas": 1,
+          "rojas": 0
+        },
+        "acuna": {
+          "apiId": 455,
+          "pj": 3,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "franchino": {
+          "apiId": 466,
+          "pj": 2,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "driussi": {
+          "apiId": 464,
+          "pj": 3,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "palacios": {
+          "apiId": 463,
+          "pj": 1,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        }
+      }
+    },
+    "Edicion5": {
+      "nombre": "Sexto Torneo Invierno Valbé 26",
+      "grupo": "Europa",
+      "zona": "Zona A",
+      "equipoId": 37,
+      "fechasJugadas": 9,
+      "golesFavor": 16,
+      "golesContra": 32,
+      "posicion": {
+        "zona": "Zona A",
+        "puesto": 9,
+        "de": 10,
+        "pj": 9,
+        "pg": 2,
+        "pe": 1,
+        "pp": 6,
+        "gf": 16,
+        "gc": 32,
+        "puntos": 7,
+        "amarillas": 6,
+        "rojas": 1
+      },
+      "proximo": null,
+      "partidos": [
+        {
+          "id": 15,
+          "fecha": "Fecha 1",
+          "copa": null,
+          "fechaHora": "2026-06-13T17:30",
+          "cancha": "Cancha 1",
+          "condicion": "visitante",
+          "rival": "Vamo Al Frente",
+          "golesFavor": 1,
+          "golesContra": 2,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 43,
+          "fecha": "Fecha 2",
+          "copa": null,
+          "fechaHora": "2026-06-20T15:50",
+          "cancha": "Cancha 3",
+          "condicion": "local",
+          "rival": "Arrancamos FC",
+          "golesFavor": 4,
+          "golesContra": 7,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 61,
+          "fecha": "Fecha 3",
+          "copa": null,
+          "fechaHora": "2026-06-27T13:20",
+          "cancha": "Cancha 2",
+          "condicion": "visitante",
+          "rival": "La Casa del Verde",
+          "golesFavor": 0,
+          "golesContra": 6,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 86,
+          "fecha": "Fecha 4",
+          "copa": null,
+          "fechaHora": "2026-07-04T12:30",
+          "cancha": "Cancha 3",
+          "condicion": "local",
+          "rival": "Palo Salva",
+          "golesFavor": 2,
+          "golesContra": 2,
+          "penales": null,
+          "jugado": true,
+          "resultado": "E"
+        },
+        {
+          "id": 105,
+          "fecha": "Fecha 5",
+          "copa": null,
+          "fechaHora": "2026-07-18T13:20",
+          "cancha": "Cancha 2",
+          "condicion": "visitante",
+          "rival": "La Banda del Pela",
+          "golesFavor": 2,
+          "golesContra": 6,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 123,
+          "fecha": "Fecha 6",
+          "copa": null,
+          "fechaHora": "2026-07-25T12:30",
+          "cancha": "Cancha 1",
+          "condicion": "local",
+          "rival": "Bruca FC",
+          "golesFavor": 0,
+          "golesContra": 7,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 145,
+          "fecha": "Fecha 7",
+          "copa": null,
+          "fechaHora": "2026-08-08T14:10",
+          "cancha": "Cancha 1",
+          "condicion": "visitante",
+          "rival": "Bien de Barrio",
+          "golesFavor": 6,
+          "golesContra": 1,
+          "penales": null,
+          "jugado": true,
+          "resultado": "G"
+        },
+        {
+          "id": 155,
+          "fecha": "Fecha 8",
+          "copa": null,
+          "fechaHora": "2026-08-15T14:00",
+          "cancha": "Cancha 1",
+          "condicion": "visitante",
+          "rival": "ReAlcoholicos",
+          "golesFavor": 0,
+          "golesContra": 1,
+          "penales": null,
+          "jugado": true,
+          "resultado": "P"
+        },
+        {
+          "id": 166,
+          "fecha": "Fecha 9",
+          "copa": null,
+          "fechaHora": "2026-08-22T13:20",
+          "cancha": "Cancha 1",
+          "condicion": "local",
+          "rival": "Alto Colon",
+          "golesFavor": 1,
+          "golesContra": 0,
+          "penales": null,
+          "jugado": true,
+          "resultado": "G"
+        }
+      ],
+      "jugadores": {
+        "kerk": {
+          "apiId": 600,
+          "pj": 6,
+          "goles": 3,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "pinotti": {
+          "apiId": 599,
+          "pj": 9,
+          "goles": 4,
+          "amarillas": 1,
+          "rojas": 0
+        },
+        "romero": {
+          "apiId": 601,
+          "pj": 5,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "genero": {
+          "apiId": 611,
+          "pj": 4,
+          "goles": 1,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "fabbro": {
+          "apiId": 608,
+          "pj": 8,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "dipaolo": {
+          "apiId": 602,
+          "pj": 8,
+          "goles": 2,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "suarez": {
+          "apiId": 603,
+          "pj": 5,
+          "goles": 2,
+          "amarillas": 1,
+          "rojas": 0
+        },
+        "fregona": {
+          "apiId": 613,
+          "pj": 9,
+          "goles": 1,
+          "amarillas": 2,
+          "rojas": 0
+        },
+        "alasia": {
+          "apiId": 604,
+          "pj": 6,
+          "goles": 1,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "armatti": {
+          "apiId": 605,
+          "pj": 4,
+          "goles": 1,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "acuna": {
+          "apiId": 598,
+          "pj": 6,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "franchino": {
+          "apiId": 609,
+          "pj": 9,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "driussi": {
+          "apiId": 607,
+          "pj": 1,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 0
+        },
+        "palacios": {
+          "apiId": 606,
+          "pj": 7,
+          "goles": 0,
+          "amarillas": 1,
+          "rojas": 0
+        },
+        "yasenzaniro": {
+          "apiId": 610,
+          "pj": 6,
+          "goles": 0,
+          "amarillas": 1,
+          "rojas": 0
+        },
+        "junco": {
+          "apiId": 612,
+          "pj": 6,
+          "goles": 0,
+          "amarillas": 0,
+          "rojas": 1
+        }
+      }
+    }
+  },
+  "jugadores": {
+    "kerk": {
+      "current": {
+        "pj": 2,
+        "goles": 4,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 6,
+        "goles": 3,
+        "amarillas": 0
+      }
+    },
+    "pinotti": {
+      "current": {
+        "pj": 3,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 9,
+        "goles": 4,
+        "amarillas": 1
+      }
+    },
+    "romero": {
+      "current": {
+        "pj": 4,
+        "goles": 3,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 5,
+        "goles": 0,
+        "amarillas": 0
+      }
+    },
+    "genero": {
+      "current": {
+        "pj": 4,
+        "goles": 1,
+        "amarillas": 1
+      },
+      "past": {
+        "pj": 4,
+        "goles": 1,
+        "amarillas": 0
+      }
+    },
+    "fabbro": {
+      "current": {
+        "pj": 2,
+        "goles": 1,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 8,
+        "goles": 0,
+        "amarillas": 0
+      }
+    },
+    "dipaolo": {
+      "current": {
+        "pj": 4,
+        "goles": 1,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 8,
+        "goles": 2,
+        "amarillas": 0
+      }
+    },
+    "suarez": {
+      "current": {
+        "pj": 4,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 5,
+        "goles": 2,
+        "amarillas": 1
+      }
+    },
+    "fregona": {
+      "current": {
+        "pj": 4,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 9,
+        "goles": 1,
+        "amarillas": 2
+      }
+    },
+    "alasia": {
+      "current": {
+        "pj": 2,
+        "goles": 1,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 6,
+        "goles": 1,
+        "amarillas": 0
+      }
+    },
+    "armatti": {
+      "current": {
+        "pj": 1,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 4,
+        "goles": 1,
+        "amarillas": 0
+      }
+    },
+    "marantelli": {
+      "current": {
+        "pj": 3,
+        "goles": 0,
+        "amarillas": 1
+      },
+      "past": null
+    },
+    "acuna": {
+      "current": {
+        "pj": 3,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 6,
+        "goles": 0,
+        "amarillas": 0
+      }
+    },
+    "franchino": {
+      "current": {
+        "pj": 2,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 9,
+        "goles": 0,
+        "amarillas": 0
+      }
+    },
+    "driussi": {
+      "current": {
+        "pj": 3,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 1,
+        "goles": 0,
+        "amarillas": 0
+      }
+    },
+    "palacios": {
+      "current": {
+        "pj": 1,
+        "goles": 0,
+        "amarillas": 0
+      },
+      "past": {
+        "pj": 7,
+        "goles": 0,
+        "amarillas": 1
+      }
+    },
+    "yasenzaniro": {
+      "current": null,
+      "past": {
+        "pj": 6,
+        "goles": 0,
+        "amarillas": 1
+      }
+    },
+    "junco": {
+      "current": null,
+      "past": {
+        "pj": 6,
+        "goles": 0,
+        "amarillas": 0
+      }
+    }
+  },
+  "sinMapear": []
+}
