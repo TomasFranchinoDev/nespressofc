@@ -13,6 +13,7 @@ import { Img } from '@/components/ui/Img';
 import { Crest } from '@/components/ui/Crest';
 import { Parallax } from '@/components/ui/ScrollFx';
 import { MagneticButton } from '@/components/ui/Interactive';
+import { useDesafio } from '@/components/desafio/Desafio';
 import { Reveal } from '@/components/ui/Primitives';
 import { SplitReveal } from '@/components/ui/SplitReveal';
 import { Particles } from '@/components/fx/Particles';
@@ -99,8 +100,8 @@ function Credits() {
 }
 
 export function Cta() {
-  const { instagram, whatsapp, email } = CLUB.contact;
-  const wa = whatsapp ? `https://wa.me/${whatsapp}?text=${encodeURIComponent('¡Hola Nespresso FC! Queremos jugar un partido.')}` : undefined;
+  const { instagram, email } = CLUB.contact;
+  const desafio = useDesafio();
 
   return (
     <section id="sumate" aria-label="Sumate" className="relative bg-ink-950">
@@ -125,9 +126,7 @@ export function Cta() {
             nosotros.
           </Reveal>
           <Reveal delay={0.35} className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <MagneticButton href={wa} disabled={!wa}>
-              {wa ? 'Desafianos' : 'Desafianos · pronto'}
-            </MagneticButton>
+            <MagneticButton onClick={desafio.open}>Desafianos</MagneticButton>
             <MagneticButton
               href={instagram ? `https://instagram.com/${instagram}` : undefined}
               disabled={!instagram}
@@ -141,11 +140,9 @@ export function Cta() {
               </MagneticButton>
             )}
           </Reveal>
-          {!instagram && (
-            <Reveal delay={0.45} className="mt-6 text-sm text-white/45">
-              Estamos armando las redes. Mientras tanto, buscanos en el Complejo Valbé.
-            </Reveal>
-          )}
+          <Reveal delay={0.45} className="mt-6 text-sm text-white/45">
+            Completá la planilla y lo coordinamos por WhatsApp o Instagram.
+          </Reveal>
         </div>
       </div>
 
@@ -156,6 +153,16 @@ export function Cta() {
           <p>
             © {new Date().getFullYear()} {CLUB.name} · {CLUB.city}
           </p>
+          {instagram && (
+            <a
+              href={`https://instagram.com/${instagram}`}
+              target="_blank"
+              rel="noreferrer"
+              className="font-sub uppercase tracking-[0.2em] text-crema/80 hover:text-crema"
+            >
+              @{instagram}
+            </a>
+          )}
           <p className="font-sub uppercase tracking-[0.2em]">{CLUB.motto}</p>
         </div>
       </footer>
