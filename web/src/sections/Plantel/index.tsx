@@ -7,7 +7,9 @@ import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { POSITION_LABEL, type Position, type Player } from '@/data/players';
 import { STAFF } from '@/data/club';
-import { ACTIVE, RETIRED, TEAM, byId, totalGoals, totalPJ, ageOf, SCORERS } from '@/lib/stats';
+import {
+  ACTIVE, RETIRED, TEAM, byId, totalGoals, totalPJ, ageOf, SCORERS, topScorer, PAST_LABEL, TORNEOS_JUGADOS, enLetras, fmtNum,
+} from '@/lib/stats';
 import { EASE } from '@/lib/motion';
 import { Img } from '@/components/ui/Img';
 import { Chip, Reveal, SectionHeading, StatCounter } from '@/components/ui/Primitives';
@@ -70,10 +72,34 @@ function ScorerPanel({ p, rank, caption }: { p: Player; rank: string; caption: s
       <div className="space-y-5 p-5 md:p-7">
         <p className="text-white/70">{caption}</p>
         <GoalBar label="Torneo actual" goles={p.current?.goles ?? 0} pj={p.current?.pj ?? 0} max={max} />
-        <GoalBar label="Invierno Valbé 26" goles={p.past?.goles ?? 0} pj={p.past?.pj ?? 0} max={max} />
+        <GoalBar label={PAST_LABEL.largo} goles={p.past?.goles ?? 0} pj={p.past?.pj ?? 0} max={max} />
       </div>
     </article>
   );
+}
+
+/**
+ * Captions de los goleadores: los números salen de las estadísticas (Valbé), y el texto se adapta
+ * si cambia quién está arriba, para no afirmar algo que dejó de ser cierto.
+ */
+function captionPrimero(p: Player) {
+  const cur = p.current;
+  if (topScorer('current').id === p.id && cur && cur.pj > 0) {
+    return `Goleador del torneo actual: ${cur.goles} goles en ${cur.pj} partidos. Promedio de ${fmtNum(cur.goles / cur.pj)} por partido.`;
+  }
+  return `${totalGoals(p)} goles en ${totalPJ(p)} partidos con la camiseta.`;
+}
+
+function captionSegundo(p: Player) {
+  const cur = p.current?.goles ?? 0;
+  const past = p.past?.goles ?? 0;
+  const base =
+    cur === 0 && p.past
+      ? `${past} goles en ${p.past.pj} partidos del ${PAST_LABEL.largo}.`
+      : past === 0 && p.current
+        ? `${cur} goles en ${p.current.pj} partidos del torneo actual.`
+        : `${totalGoals(p)} goles en ${totalPJ(p)} partidos.`;
+  return p.roles?.includes('Presidente') ? `${base} Y además, presidente.` : base;
 }
 
 export function Plantel() {
@@ -104,7 +130,7 @@ export function Plantel() {
         n="04"
         label="El Plantel"
         title={<>Los que<br />ponen la cara</>}
-        sub={`${TEAM.activos} jugadores, dos torneos y una sola regla: el que llega tarde ceba.`}
+        sub={`${TEAM.activos} jugadores, ${enLetras(TORNEOS_JUGADOS)} torneos y una sola regla: el que llega tarde ceba.`}
       />
 
       {/* Comisión directiva */}
@@ -130,14 +156,14 @@ export function Plantel() {
             <ScorerPanel
               p={first}
               rank="Máximo artillero"
-              caption={`Goleador del torneo actual: ${first.current?.goles} goles en ${first.current?.pj} partidos. Promedio de ${((first.current?.goles ?? 0) / Math.max(1, first.current?.pj ?? 1)).toFixed(0)} por partido.`}
+              caption={captionPrimero(first)}
             />
           )}
           {second && (
             <ScorerPanel
               p={second}
               rank="Segundo goleador histórico"
-              caption={`${second.past?.goles} goles en ${second.past?.pj} partidos del Invierno Valbé 26. Y además, presidente.`}
+              caption={captionSegundo(second)}
             />
           )}
         </div>

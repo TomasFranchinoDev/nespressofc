@@ -1,9 +1,14 @@
 /**
  * Plantel de Nespresso FC — datos reales.
- * Para actualizar una estadística, cambiá el número acá: totales, rankings, edades y tags
- * se calculan solos en lib/stats.ts.
+ *
+ * Identidad (nombre, número, posición, fotos, roles) → se edita acá.
+ * Estadísticas (current / past) → vienen de src/data/valbe.json, que regenera todos los días
+ * el GitHub Action "Sync datos Valbé" (scripts/sync-valbe.mjs). Los números de PLAYERS_BASE
+ * quedan solo como respaldo si un jugador no aparece en ese JSON.
+ * Totales, rankings, edades y tags se calculan solos en lib/stats.ts.
  */
 import type { ImageSlug } from './images.generated';
+import valbe from './valbe.json';
 
 export type Position = 'ARQ' | 'DEF' | 'MD' | 'DC';
 
@@ -32,9 +37,9 @@ export interface Player {
   /** ISO. Solo se muestra la edad calculada. */
   birthDate: string;
   status: 'activo' | 'retirado';
-  /** Torneo actual (Verano Valbé). */
+  /** Edición en juego de Valbé. null = no jugó. */
   current: StatLine | null;
-  /** Torneo pasado (Invierno Valbé 26). null = no jugó ese torneo. */
+  /** Suma de las ediciones anteriores de Valbé. null = no jugó ninguna. */
   past: StatLine | null;
   roles?: string[];
   photo?: { slug: ImageSlug; focus?: string };
@@ -42,7 +47,8 @@ export interface Player {
 
 const s = (pj: number, goles = 0, amarillas = 0): StatLine => ({ pj, goles, amarillas });
 
-export const PLAYERS: Player[] = [
+/** Plantel con estadísticas de respaldo (se pisan con valbe.json más abajo). */
+export const PLAYERS_BASE: Player[] = [
   {
     id: 'kerk', firstName: 'Julián', lastName: 'Kerk', nickname: 'Juka',
     number: 7, position: 'MD', birthDate: '2003-03-27', status: 'activo',
@@ -140,3 +146,15 @@ export const PLAYERS: Player[] = [
     current: null, past: null,
   },
 ];
+
+/* ─── Estadísticas de Valbé ─────────────────────────────────── */
+type ValbeLine = { current: StatLine | null; past: StatLine | null };
+const VALBE_STATS: Record<string, ValbeLine | undefined> = valbe.jugadores;
+
+/** Pisa SOLO current/past con lo que trae Valbé; todo lo demás queda como está. */
+const conValbe = (p: Player): Player => {
+  const v = VALBE_STATS[p.id];
+  return v ? { ...p, current: v.current ?? p.current, past: v.past ?? p.past } : p;
+};
+
+export const PLAYERS: Player[] = PLAYERS_BASE.map(conValbe);

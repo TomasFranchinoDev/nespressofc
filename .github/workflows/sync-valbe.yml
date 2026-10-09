@@ -1,0 +1,44 @@
+name: Sync datos Valbé
+
+on:
+  schedule:
+    # 10:17 UTC = 07:17 en Sunchales. Valbé regenera su cache de madrugada.
+    - cron: "17 10 * * *"
+  workflow_dispatch: {} # botón "Run workflow" para forzarlo después de un partido
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-valbe
+  cancel-in-progress: false
+
+# El proyecto Vite vive en web/ (la raíz del repo también tiene Imagenes/ con los originales).
+defaults:
+  run:
+    working-directory: web
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Traer datos de Valbé
+        run: node scripts/sync-valbe.mjs
+
+      - name: Commit si cambió (Vercel redeploya solo)
+        run: |
+          if git diff --quiet -- src/data/valbe.json && ! git ls-files --others --exclude-standard -- src/data/valbe.json | grep -q .; then
+            echo "Sin cambios"; exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/valbe.json
+          git commit -m "datos: sync Valbé $(date -u +%F)"
+          git push

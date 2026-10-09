@@ -1,17 +1,18 @@
 /**
  * 07 · TORNEOS & PALMARÉS
- * Dos "entradas" de torneo, la tabla histórica de goleadores (barras apiladas actual + pasado)
- * y la vitrina (en construcción).
+ * Dos "entradas" de torneo, el matchday (próximo partido + últimos resultados, desde Valbé),
+ * la tabla histórica de goleadores (barras apiladas actual + pasado) y la vitrina (en construcción).
  */
 import { motion } from 'motion/react';
 import { TOURNAMENTS } from '@/data/content';
-import { SCORERS, TEAM, topScorer, totalGoals } from '@/lib/stats';
+import { SCORERS, TEAM, topScorer, totalGoals, PAST_LABEL, TORNEOS_JUGADOS, enLetras } from '@/lib/stats';
 import { EASE } from '@/lib/motion';
 import { cn } from '@/lib/cn';
 import { Img } from '@/components/ui/Img';
 import { Crest } from '@/components/ui/Crest';
 import { Reveal, SectionHeading, StatCounter } from '@/components/ui/Primitives';
 import { TiltCard } from '@/components/ui/Interactive';
+import { Matchday } from './Matchday';
 
 function Ticket({ t, i }: { t: (typeof TOURNAMENTS)[number]; i: number }) {
   const team = TEAM[t.key];
@@ -93,7 +94,7 @@ function ScorersChart() {
           <h3 className="font-display mt-2 text-[clamp(2.4rem,5vw,4.5rem)]">Goleadores</h3>
         </div>
         <div className="flex gap-5 text-xs text-white/60" aria-hidden>
-          <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-roast-500" /> Invierno 26</span>
+          <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-roast-500" /> {PAST_LABEL.corto}</span>
           <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-sm bg-crema" /> Torneo actual</span>
         </div>
       </div>
@@ -110,7 +111,7 @@ function ScorersChart() {
               <div
                 className="flex h-5 overflow-hidden rounded-full bg-white/5"
                 role="img"
-                aria-label={`${p.firstName} ${p.lastName}: ${past} goles en Invierno 26 y ${cur} en el torneo actual`}
+                aria-label={`${p.firstName} ${p.lastName}: ${past} goles en ${PAST_LABEL.largo} y ${cur} en el torneo actual`}
               >
                 <motion.span
                   className="h-full bg-roast-500"
@@ -161,7 +162,7 @@ export function Torneos() {
       <SectionHeading
         n="07"
         label="Torneos & Palmarés"
-        title={<>Dos torneos<br />y contando</>}
+        title={<>{enLetras(TORNEOS_JUGADOS, true)} torneos<br />y contando</>}
         sub={`Debutamos en el Complejo Valbé en invierno y volvimos para el verano. ${TEAM.goles} goles en el camino.`}
       />
       <div className="mt-16 grid gap-8 lg:grid-cols-2">
@@ -169,6 +170,7 @@ export function Torneos() {
           <Ticket key={t.key} t={t} i={i} />
         ))}
       </div>
+      <Matchday />
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
         <ScorersChart />
         <Vitrina />
