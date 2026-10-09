@@ -7,11 +7,44 @@ import { EDICION_LABEL } from '@/data/content';
 import valbe from '@/data/valbe.json';
 
 /* ─── Ediciones de Valbé (src/data/valbe.json) ────────────────── */
+export interface PartidoValbe {
+  id: number;
+  fecha: string | null;
+  copa: string | null;
+  /** "YYYY-MM-DDTHH:mm" en hora de Sunchales, SIN zona horaria (ver lib/fecha.ts). */
+  fechaHora: string | null;
+  cancha: string | null;
+  condicion: 'local' | 'visitante';
+  rival: string;
+  golesFavor: number | null;
+  golesContra: number | null;
+  penales: { favor: number; contra: number } | null;
+  jugado: boolean;
+  /** "G" | "E" | "P" | "G (pen)" | "P (pen)" */
+  resultado: string | null;
+}
+
+export interface PosicionValbe {
+  zona: string;
+  puesto: number;
+  de: number;
+  pj: number;
+  pg: number;
+  pe: number;
+  pp: number;
+  gf: number;
+  gc: number;
+  puntos: number;
+}
+
 interface EdicionValbe {
   nombre: string;
   fechasJugadas: number;
   golesFavor: number;
   golesContra: number;
+  posicion: PosicionValbe | null;
+  proximo: PartidoValbe | null;
+  partidos: PartidoValbe[];
 }
 const EDICIONES = valbe.ediciones as Record<string, EdicionValbe>;
 const ID_ACTUAL = valbe.edicionActual;
@@ -19,6 +52,14 @@ const IDS_PASADAS = Object.keys(EDICIONES).filter((e) => e !== ID_ACTUAL);
 
 export const EDICION_ACTUAL: EdicionValbe | undefined = EDICIONES[ID_ACTUAL];
 export const EDICIONES_PASADAS = IDS_PASADAS.map((e) => EDICIONES[e]);
+/** Próximo partido del torneo en juego (null si no hay ninguno programado). */
+export const PROXIMO = EDICION_ACTUAL?.proximo ?? null;
+/** Partidos ya jugados del torneo en juego, del más reciente al más viejo. */
+export const RESULTADOS = (EDICION_ACTUAL?.partidos ?? [])
+  .filter((p) => p.jugado)
+  .sort((a, b) => String(b.fechaHora).localeCompare(String(a.fechaHora)));
+export const POSICION = EDICION_ACTUAL?.posicion ?? null;
+
 /** Cantidad de torneos jugados (ediciones de Valbé donde aparece Nespresso). */
 export const TORNEOS_JUGADOS = Object.keys(EDICIONES).length || 2;
 

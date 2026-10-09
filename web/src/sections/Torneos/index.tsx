@@ -1,7 +1,7 @@
 /**
  * 07 · TORNEOS & PALMARÉS
- * Dos "entradas" de torneo, la tabla histórica de goleadores (barras apiladas actual + pasado)
- * y la vitrina (en construcción).
+ * Dos "entradas" de torneo, el matchday (próximo partido + últimos resultados, desde Valbé),
+ * la tabla histórica de goleadores (barras apiladas actual + pasado) y la vitrina (en construcción).
  */
 import { motion } from 'motion/react';
 import { TOURNAMENTS } from '@/data/content';
@@ -12,6 +12,7 @@ import { Img } from '@/components/ui/Img';
 import { Crest } from '@/components/ui/Crest';
 import { Reveal, SectionHeading, StatCounter } from '@/components/ui/Primitives';
 import { TiltCard } from '@/components/ui/Interactive';
+import { Matchday } from './Matchday';
 
 function Ticket({ t, i }: { t: (typeof TOURNAMENTS)[number]; i: number }) {
   const team = TEAM[t.key];
@@ -169,6 +170,7 @@ export function Torneos() {
           <Ticket key={t.key} t={t} i={i} />
         ))}
       </div>
+      <Matchday />
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
         <ScorersChart />
         <Vitrina />

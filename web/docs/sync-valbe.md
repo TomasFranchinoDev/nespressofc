@@ -53,7 +53,7 @@ Si el repo restringe permisos, hay que habilitar *Settings → Actions → Gener
 
 ## Iteración 2 (ideas)
 
-- Widget de **próximo partido** y **últimos resultados** con `torneoActual.proximo` y `torneoActual.partidos`.
+- ~~Widget de **próximo partido** y **últimos resultados**~~ → hecho: `src/sections/Torneos/Matchday.tsx`.
 - **Goleadores por partido** con `/api/partidos/:id/incidencias` (viene `jugadorId` = `apiId`).
 - **Tarjetas de torneos** generadas desde `ediciones` en vez del texto fijo ("Dos torneos y contando", "23 goles en el camino").
 - Copa/playoffs con `/api/partidos/bracket`.
