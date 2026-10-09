@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import 'lenis/dist/lenis.css';
 
+/* Pantallas anchas pero muy bajas (celular apaisado, ventanas achicadas): ajustes del Hero. */
+@custom-variant short (@media (min-width: 768px) and (max-height: 500px));
+
 /* ─────────────────────────────────────────────────────────────
    Sistema de diseño Nespresso FC
    ───────────────────────────────────────────────────────────── */

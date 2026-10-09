@@ -144,7 +144,7 @@ export function Hero({ ready }: { ready: boolean }) {
         {/* Escudo: 3D si el equipo aguanta, SVG si no. */}
         <div
           data-crest-wrap
-          className="absolute left-1/2 top-[13svh] z-[3] -ml-[21svh] h-[42svh] w-[42svh] will-change-transform md:top-[10svh] md:-ml-[25svh] md:h-[50svh] md:w-[50svh]"
+          className="absolute left-1/2 top-[13svh] z-[3] -ml-[21svh] h-[42svh] w-[42svh] will-change-transform md:top-[10svh] md:-ml-[25svh] md:h-[50svh] md:w-[50svh] short:top-[9svh] short:-ml-[21svh] short:h-[42svh] short:w-[42svh]"
         >
           <div data-crest-inner className="h-full w-full">
             {use3D ? (
@@ -163,7 +163,9 @@ export function Hero({ ready }: { ready: boolean }) {
             <span data-hero-meta-inner className="kicker text-crema">Fútbol 6 · {CLUB.city}</span>
             <span data-hero-meta-inner className="kicker hidden sm:block">Est. {CLUB.founded}</span>
           </div>
-          <h1 aria-label="Nespresso FC" className="font-display flex justify-center text-[20.5vw] leading-[0.78] text-white md:text-[17.2vw]">
+          {/* Desktop: el título se escala con el ancho, pero nunca más de 30svh. Sin ese tope, en pantallas
+              anchas y bajas (ej. 1349×644, ultrawide) crecía hacia arriba y se montaba sobre el escudo. */}
+          <h1 aria-label="Nespresso FC" className="font-display flex justify-center text-[20.5vw] leading-[0.78] text-white md:text-[min(17.2vw,30svh)]">
             {TITLE.map((c, i) => (
               <span key={i} data-hero-char className="inline-block will-change-transform" aria-hidden>
                 <span className="inline-block overflow-hidden pb-[0.04em] align-bottom">
@@ -183,7 +185,7 @@ export function Hero({ ready }: { ready: boolean }) {
         {!reduced && (
         <p
           data-tagline
-          className="font-display absolute inset-x-0 bottom-[16svh] z-[4] px-4 text-center text-[11.5vw] leading-[0.9] text-crema md:bottom-[12svh] md:text-[7.4vw]"
+          className="font-display absolute inset-x-0 bottom-[16svh] z-[4] px-4 text-center text-[11.5vw] leading-[0.9] text-crema md:bottom-[12svh] md:text-[min(7.4vw,13svh)]"
         >
           {['“La suerte del principiante', 'no puede fallar”'].map((l) => (
             <span key={l} className="block overflow-hidden">
