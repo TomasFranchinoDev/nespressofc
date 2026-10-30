@@ -1,8 +1,8 @@
 {
-  "sincronizadoEn": "2026-10-24T14:01:03.529Z",
+  "sincronizadoEn": "2026-10-30T16:42:20.856Z",
   "equipo": "Nespresso FC",
   "fuente": "https://complejovalbe.netlify.app (cache de https://fuchibol-fi0t.onrender.com)",
-  "fuenteGeneradaEn": "2026-10-24T04:59:00.691Z",
+  "fuenteGeneradaEn": "2026-10-30T16:23:24.788Z",
   "edicionActual": "Edicion6",
   "ediciones": {
     "Edicion6": {
@@ -10,37 +10,24 @@
       "grupo": "Europa",
       "zona": "Zona A",
       "equipoId": 51,
-      "fechasJugadas": 7,
-      "golesFavor": 19,
-      "golesContra": 17,
+      "fechasJugadas": 8,
+      "golesFavor": 21,
+      "golesContra": 22,
       "posicion": {
         "zona": "Zona A",
-        "puesto": 7,
+        "puesto": 8,
         "de": 12,
-        "pj": 7,
+        "pj": 8,
         "pg": 3,
         "pe": 2,
-        "pp": 2,
-        "gf": 19,
-        "gc": 17,
+        "pp": 3,
+        "gf": 21,
+        "gc": 22,
         "puntos": 11,
         "amarillas": 2,
         "rojas": 0
       },
-      "proximo": {
-        "id": 325,
-        "fecha": "Fecha 8",
-        "copa": null,
-        "fechaHora": "2026-10-29T22:10",
-        "cancha": "Cancha 1",
-        "condicion": "local",
-        "rival": "KND FC",
-        "golesFavor": null,
-        "golesContra": null,
-        "penales": null,
-        "jugado": false,
-        "resultado": null
-      },
+      "proximo": null,
       "partidos": [
         {
           "id": 27,
@@ -148,11 +135,11 @@
           "cancha": "Cancha 1",
           "condicion": "local",
           "rival": "KND FC",
-          "golesFavor": null,
-          "golesContra": null,
+          "golesFavor": 2,
+          "golesContra": 5,
           "penales": null,
-          "jugado": false,
-          "resultado": null
+          "jugado": true,
+          "resultado": "P"
         }
       ],
       "jugadores": {
