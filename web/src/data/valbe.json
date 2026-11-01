@@ -1,8 +1,8 @@
 {
-  "sincronizadoEn": "2026-10-30T16:42:20.856Z",
+  "sincronizadoEn": "2026-11-01T16:48:52.260Z",
   "equipo": "Nespresso FC",
   "fuente": "https://complejovalbe.netlify.app (cache de https://fuchibol-fi0t.onrender.com)",
-  "fuenteGeneradaEn": "2026-10-30T16:23:24.788Z",
+  "fuenteGeneradaEn": "2026-10-31T22:33:03.157Z",
   "edicionActual": "Edicion6",
   "ediciones": {
     "Edicion6": {
@@ -145,35 +145,35 @@
       "jugadores": {
         "kerk": {
           "apiId": 457,
-          "pj": 5,
+          "pj": 6,
           "goles": 7,
           "amarillas": 0,
           "rojas": 0
         },
         "pinotti": {
           "apiId": 456,
-          "pj": 6,
-          "goles": 2,
+          "pj": 7,
+          "goles": 3,
           "amarillas": 0,
           "rojas": 0
         },
         "romero": {
           "apiId": 458,
-          "pj": 7,
-          "goles": 5,
+          "pj": 8,
+          "goles": 6,
           "amarillas": 0,
           "rojas": 0
         },
         "genero": {
           "apiId": 468,
-          "pj": 5,
+          "pj": 6,
           "goles": 1,
           "amarillas": 1,
           "rojas": 0
         },
         "fabbro": {
           "apiId": 465,
-          "pj": 4,
+          "pj": 5,
           "goles": 1,
           "amarillas": 0,
           "rojas": 0
@@ -187,63 +187,63 @@
         },
         "suarez": {
           "apiId": 460,
-          "pj": 7,
+          "pj": 8,
           "goles": 0,
           "amarillas": 0,
           "rojas": 0
         },
         "fregona": {
           "apiId": 469,
-          "pj": 7,
+          "pj": 8,
           "goles": 1,
           "amarillas": 0,
           "rojas": 0
         },
         "alasia": {
           "apiId": 461,
-          "pj": 5,
+          "pj": 6,
           "goles": 1,
           "amarillas": 0,
           "rojas": 0
         },
         "armatti": {
           "apiId": 462,
-          "pj": 3,
+          "pj": 4,
           "goles": 0,
           "amarillas": 0,
           "rojas": 0
         },
         "marantelli": {
           "apiId": 467,
-          "pj": 5,
+          "pj": 6,
           "goles": 0,
           "amarillas": 1,
           "rojas": 0
         },
         "acuna": {
           "apiId": 455,
-          "pj": 4,
+          "pj": 5,
           "goles": 0,
           "amarillas": 0,
           "rojas": 0
         },
         "franchino": {
           "apiId": 466,
-          "pj": 4,
+          "pj": 5,
           "goles": 0,
           "amarillas": 0,
           "rojas": 0
         },
         "driussi": {
           "apiId": 464,
-          "pj": 4,
+          "pj": 5,
           "goles": 0,
           "amarillas": 0,
           "rojas": 0
         },
         "palacios": {
           "apiId": 463,
-          "pj": 3,
+          "pj": 4,
           "goles": 0,
           "amarillas": 0,
           "rojas": 0
@@ -520,7 +520,7 @@
   "jugadores": {
     "kerk": {
       "current": {
-        "pj": 5,
+        "pj": 6,
         "goles": 7,
         "amarillas": 0
       },
@@ -532,8 +532,8 @@
     },
     "pinotti": {
       "current": {
-        "pj": 6,
-        "goles": 2,
+        "pj": 7,
+        "goles": 3,
         "amarillas": 0
       },
       "past": {
@@ -544,8 +544,8 @@
     },
     "romero": {
       "current": {
-        "pj": 7,
-        "goles": 5,
+        "pj": 8,
+        "goles": 6,
         "amarillas": 0
       },
       "past": {
@@ -556,7 +556,7 @@
     },
     "genero": {
       "current": {
-        "pj": 5,
+        "pj": 6,
         "goles": 1,
         "amarillas": 1
       },
@@ -568,7 +568,7 @@
     },
     "fabbro": {
       "current": {
-        "pj": 4,
+        "pj": 5,
         "goles": 1,
         "amarillas": 0
       },
@@ -592,7 +592,7 @@
     },
     "suarez": {
       "current": {
-        "pj": 7,
+        "pj": 8,
         "goles": 0,
         "amarillas": 0
       },
@@ -604,7 +604,7 @@
     },
     "fregona": {
       "current": {
-        "pj": 7,
+        "pj": 8,
         "goles": 1,
         "amarillas": 0
       },
@@ -616,7 +616,7 @@
     },
     "alasia": {
       "current": {
-        "pj": 5,
+        "pj": 6,
         "goles": 1,
         "amarillas": 0
       },
@@ -628,7 +628,7 @@
     },
     "armatti": {
       "current": {
-        "pj": 3,
+        "pj": 4,
         "goles": 0,
         "amarillas": 0
       },
@@ -640,7 +640,7 @@
     },
     "marantelli": {
       "current": {
-        "pj": 5,
+        "pj": 6,
         "goles": 0,
         "amarillas": 1
       },
@@ -648,7 +648,7 @@
     },
     "acuna": {
       "current": {
-        "pj": 4,
+        "pj": 5,
         "goles": 0,
         "amarillas": 0
       },
@@ -660,7 +660,7 @@
     },
     "franchino": {
       "current": {
-        "pj": 4,
+        "pj": 5,
         "goles": 0,
         "amarillas": 0
       },
@@ -672,7 +672,7 @@
     },
     "driussi": {
       "current": {
-        "pj": 4,
+        "pj": 5,
         "goles": 0,
         "amarillas": 0
       },
@@ -684,7 +684,7 @@
     },
     "palacios": {
       "current": {
-        "pj": 3,
+        "pj": 4,
         "goles": 0,
         "amarillas": 0
       },
