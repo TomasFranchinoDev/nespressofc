@@ -1,8 +1,8 @@
 {
-  "sincronizadoEn": "2026-11-01T16:48:52.260Z",
+  "sincronizadoEn": "2026-11-02T20:22:23.949Z",
   "equipo": "Nespresso FC",
   "fuente": "https://complejovalbe.netlify.app (cache de https://fuchibol-fi0t.onrender.com)",
-  "fuenteGeneradaEn": "2026-10-31T22:33:03.157Z",
+  "fuenteGeneradaEn": "2026-11-02T19:37:34.574Z",
   "edicionActual": "Edicion6",
   "ediciones": {
     "Edicion6": {
@@ -27,7 +27,20 @@
         "amarillas": 2,
         "rojas": 0
       },
-      "proximo": null,
+      "proximo": {
+        "id": 386,
+        "fecha": "Fecha 9",
+        "copa": null,
+        "fechaHora": "2026-11-05T22:10",
+        "cancha": "Cancha 3",
+        "condicion": "visitante",
+        "rival": "Bruca FC",
+        "golesFavor": null,
+        "golesContra": null,
+        "penales": null,
+        "jugado": false,
+        "resultado": null
+      },
       "partidos": [
         {
           "id": 27,
@@ -140,6 +153,48 @@
           "penales": null,
           "jugado": true,
           "resultado": "P"
+        },
+        {
+          "id": 386,
+          "fecha": "Fecha 9",
+          "copa": null,
+          "fechaHora": "2026-11-05T22:10",
+          "cancha": "Cancha 3",
+          "condicion": "visitante",
+          "rival": "Bruca FC",
+          "golesFavor": null,
+          "golesContra": null,
+          "penales": null,
+          "jugado": false,
+          "resultado": null
+        },
+        {
+          "id": 400,
+          "fecha": "Fecha 10",
+          "copa": null,
+          "fechaHora": "2026-11-12T19:10",
+          "cancha": "Cancha 2",
+          "condicion": "visitante",
+          "rival": "Palo Salva",
+          "golesFavor": null,
+          "golesContra": null,
+          "penales": null,
+          "jugado": false,
+          "resultado": null
+        },
+        {
+          "id": 410,
+          "fecha": "Fecha 11",
+          "copa": null,
+          "fechaHora": "2026-11-19T19:30",
+          "cancha": "Cancha 1",
+          "condicion": "local",
+          "rival": "Pisteros",
+          "golesFavor": null,
+          "golesContra": null,
+          "penales": null,
+          "jugado": false,
+          "resultado": null
         }
       ],
       "jugadores": {
